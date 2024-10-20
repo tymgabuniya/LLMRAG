@@ -657,6 +657,3 @@ def returnContext():
     
     
     return(contextualInfo[0])
-
-#query = ["Who likes Amazon?"]
-#[tokenizedQuery, embedingsQuery] = processData(query)
