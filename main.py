@@ -11,8 +11,6 @@ import numpy as np
 import gensim.downloader
 from mistralai import Mistral
 
-from fastapi import FastAPI
-
 embeddings = gensim.downloader.load('word2vec-google-news-300')
 client = Mistral(api_key="zTZl98Dv7VDRUbPdbEGn9umIVaf78vw5")
 
@@ -552,15 +550,8 @@ def getSubset(listJoinedQuestions, data, inxsSorteda, inxsSortedb, indexes, inxe
         subTables.append(data.iloc[i0:i1])
         
     return(subTables)
-    
-        
 
-app = FastAPI()
-
-contextualInfo = []
-
-@app.post("/response")
-def makeQueries(query: str, contextWindow: int, dumyData: int):
+def makeQueries(query, contextWindow, dumyData):
     
     [tokenizedQuery, embedingsQuery] = processData([query])
     
@@ -645,15 +636,12 @@ def makeQueries(query: str, contextWindow: int, dumyData: int):
             model="mistral-large-latest",
             messages=messages
         )
-    
-    contextualInfo.append(subTables)
             
-    
+    print("ANSWER")
     return(chat_response.choices[0].message.content)
-    
-@app.get("/context")
 
-def returnContext():
-    
-    
-    return(contextualInfo[0])
+query = "How many men are in the sample?"
+contextWindow = 2
+dumyData = 3
+
+print(makeQueries(query, contextWindow, dumyData))
