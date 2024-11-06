@@ -7,6 +7,8 @@ The similarity search is done both across the rows of the tables and across the 
 
 The Mistral model from the mistralai is used. The API key can be obtained by registering in the webpage. 
 
-In order to obtain an answer to the query, a user should use the function makeQueries(query: str, contextWindow: int, dumyData: int). In this function, the contextWindow defines the number of the most relevant rows and questions to choose and the dumyData allows to use one data set only or both data sets for the analysis: dummyData = 1 leads to the analysis using the Dataset 1 only, dummyData = 2 leads to the analysis using the Dataset 2 only while dummyData = 3 to the use of the both datasets. The program also prints out the parts of the data chosen automatically or by using the function returnContext().
+In order to obtain an answer to the query, a user should use the function makeQueries(query: str, contextWindow: int, dumyData: int). In this function, the contextWindow defines the number of the most relevant rows and questions to choose and the dumyData allows to use one data set only or both data sets for the analysis: dummyData = 1 leads to the analysis using the Dataset 1 only, dummyData = 2 leads to the analysis using the Dataset 2 only while dummyData = 3 to the use of the both datasets. The program also automatically prints out the parts of the data chosen.
+
+THE QUERY ANSWER IS PRINTED IN THE END.
 
 
